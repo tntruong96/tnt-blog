@@ -1,15 +1,12 @@
-import React from "react";
+import React,  { useState, useEffect } from "react";
 import { PostCategoryContainer, PostCategoryItem } from "./style";
-import { ICategory } from "interfaces/category.interface";
-import { useState } from "react";
-import { useEffect } from "react";
+import type { ICategory } from "interfaces/category.interface";
 import { getCategories } from "services/categories";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-interface Props {}
 
-const PostCategory: React.FC<Props> = () => {
+const PostCategory: React.FC = () => {
   const [listCategories, setListCategories] = useState<ICategory[]>([]);
   const router = useRouter();
 

@@ -1,11 +1,11 @@
-import { IAuthor } from 'interfaces/author.interface';
+import type { IAuthor } from 'interfaces/author.interface';
 import React from 'react';
 import { AuthorAvatar, AuthorContainer, AuthorDetail } from './style';
 import Image from 'next/image';
 
 
 interface Props {
-    author: IAuthor
+   readonly author: IAuthor
 }
 
 const Author: React.FC<Props> = ({author}) => {

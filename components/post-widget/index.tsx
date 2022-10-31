@@ -1,24 +1,23 @@
-import { IPost } from "interfaces/post.interface";
+import type { IPost } from "interfaces/post.interface";
 
 import moment from "moment";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getRecentPosts, getSimilarPosts } from "services/posts";
 import { PostWidgetItem, PostWidgetItems, WidgetContainer } from "./style";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
 interface Props {
-  slug?: string;
-  categories?: [string];
+  readonly slug?: string;
+  readonly categories?: [string];
 }
 
 const PostWidget: React.FC<Props> = ({ slug, categories }) => {
   const [relatedPosts, setRelatedPosts] = useState<IPost[]>([]);
   const router = useRouter();
 
-  const routeOperate = (slug: string  | undefined) => {
-    router.push(`/post/${slug}`)
+  const routeOperate = (slugString: string  | undefined) => {
+    router.push(`/post/${slugString}`)
   }
 
   const renderRelatedPosts = relatedPosts.map((relatedPost) => (
@@ -50,8 +49,8 @@ const PostWidget: React.FC<Props> = ({ slug, categories }) => {
       } else {
         getRecentPosts().then((res) => setRelatedPosts(res));
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error:unknown) {
+      // console.log(error);
     }
   }, [slug]);
 

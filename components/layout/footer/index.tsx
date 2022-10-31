@@ -9,12 +9,12 @@ const Footer = () => {
     <FooterContainer>
       <div className="flex justify-center">
         <div className="flex text-4xl">
-          <Link passHref href={"https://www.facebook.com/orlardo.truong"}>
+          <Link passHref href="https://www.facebook.com/orlardo.truong">
             <a target="_blank">
               <FaFacebook className="m-5 ml-0 cursor-pointer" />
             </a>
           </Link>
-          <Link passHref href={"https://github.com/tntruong96"}>
+          <Link passHref href="https://github.com/tntruong96">
             <a target="_blank">
               <FaGithub className="m-5 cursor-pointer" />
             </a>

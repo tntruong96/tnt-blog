@@ -1,4 +1,4 @@
-import { IPost } from "interfaces/post.interface";
+import type { IPost } from "interfaces/post.interface";
 import React from "react";
 import { PostDetailContainer } from "./style";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import moment from "moment";
 import DOMPurify from "isomorphic-dompurify";
 
 interface Props {
-  postDetail: IPost;
+  readonly postDetail: IPost;
 }
 
 const PostDetail: React.FC<Props> = ({ postDetail }) => {

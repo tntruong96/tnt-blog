@@ -1,14 +1,12 @@
-import React from 'react';
-import { useRef } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { FormData, publishComment, submitComment } from 'services/comments';
+import React, { useRef, useEffect, useState }  from 'react';
+import {publishComment, submitComment } from 'services/comments';
+import type {FormData} from 'services/comments';
 import { Form, FormContainer, FormField } from './style';
 
 type Props = {
-    slug: string,
-    setReload: any,
-    reload: boolean
+    readonly slug: string,
+    readonly setReload: React.Dispatch<React.SetStateAction<boolean>>,
+    readonly reload: boolean
 }
 
 const FormComment: React.FC<Props> = ({slug, setReload, reload}) => {
@@ -17,7 +15,9 @@ const FormComment: React.FC<Props> = ({slug, setReload, reload}) => {
     const nameEl = useRef<HTMLInputElement>(null);
     const commentEl = useRef<HTMLTextAreaElement>(null);
 
-    useEffect(() => {}, [reload])
+    useEffect(() => {
+        return
+    }, [reload])
 
     const handleSubmit = async () => {
        let email = emailEl.current?.value;
@@ -35,7 +35,7 @@ const FormComment: React.FC<Props> = ({slug, setReload, reload}) => {
        if(email && name && comment){
            const formData: FormData = {email, name, comment, slug}
            const data = await submitComment(formData);
-           if(data && data.createComment.id){
+           if(data?.createComment?.id){
                const wasPublished = await publishComment(data.createComment.id);
                setReload(!reload)
                cleanFieldForm();

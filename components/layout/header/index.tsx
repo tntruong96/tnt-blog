@@ -57,7 +57,7 @@ const Header = () => {
       <HeaderLogo>
         <div className="pl-2 md:pl-20">
           <Image
-            onClick={() => router.push("/")}
+            onClick={async () => router.push("/")}
             className="cursor-pointer"
             objectFit="fill"
             src={logo}

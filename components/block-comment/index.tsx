@@ -1,15 +1,13 @@
 
-import { IComment } from 'interfaces/post.interface';
+import type { IComment } from 'interfaces/post.interface';
 import moment from 'moment';
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getCommentProcess } from 'services/comments';
 import { CommentContainer, CommentItem } from './style';
 
 type Props = {
-    slug: string,
-    reload: boolean
+    readonly slug: string,
+    readonly reload: boolean
 }
 
 const BlockComment: React.FC<Props> = ({slug, reload}) => {

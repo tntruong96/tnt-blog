@@ -1,21 +1,18 @@
 import { Divider } from 'antd';
-import React from 'react';
+import React, { Fragment } from 'react';
 import Footer from './footer';
 import Header from './header';
 
-interface LayoutProps {
 
-}
-
-const Layout: React.FC<LayoutProps> = ({children}) => {
+const Layout: React.FC = ({children}) => {
     return (
-        <React.Fragment>
+        <Fragment>
             <Header/>
             <Divider/>
             {children}
             <Divider/>
             <Footer/>
-        </React.Fragment>
+        </Fragment>
     );
 };
 
