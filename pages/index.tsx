@@ -1,13 +1,12 @@
-import type { NextPage } from 'next'
-import { GetStaticProps } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 import { getPosts } from 'services/posts'
 import PostCard from '@components/post-card'
-import { IPost } from 'interfaces/post.interface'
+import type { IPost } from 'interfaces/post.interface'
 import PostWidget from '@components/post-widget'
 import PostCategory from '@components/post-category'
 
 type Props = {
-  posts: IPost[];
+  readonly posts: readonly IPost[];
 }
 
 const Home: NextPage<Props> = ({posts}) => {
@@ -32,7 +31,7 @@ export default Home
 
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const posts = (await  getPosts()) || [];
+  const posts = (await  getPosts()) ?? [];
 
   return {
     props: {

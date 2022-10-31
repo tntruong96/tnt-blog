@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { gql, GraphQLClient} from 'graphql-request'
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const graphqlUrl = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT;
 const graphqlToken = process.env.NEXT_PUBLIC_GRAPHQL_TOKEN;
@@ -26,12 +26,13 @@ export default async function  comments  (req: NextApiRequest, res: NextApiRespo
 
     try {
       const result =await graphqlClient.request(query, req.body);
-      return res.status(200).send(result);
+      return void res.status(200).send(result);
       
-    } catch (error) {
-      console.log(error);
-      return res.status(500).send(error);
+    } catch (error: unknown) {
+      // console.log(error);
+      return void res.status(500).send(error);
     }
 
   }
+  return null;
 }

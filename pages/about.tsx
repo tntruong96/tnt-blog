@@ -12,8 +12,8 @@ const About = () => {
             <section className="px-10">
                 <h5 className={ classNames("text-slate-500 tracking-widest md:text-center title", useClassName('title'))}>A FEW WORDS ABOUT ME</h5>
                 <h3 className='py-2'>Hello world,</h3>
-                <h3 className='py-2'>My name is Trường, a Frond End Developer and Designer. I has two years working at FPT Software Company and now I'm working as a freelancer. I specialize in responsive websites and functional user interface. Besides developing websites, I love to enjoy photography and motorcycle adventures.</h3>
-                <h3 className='py-2'>This place is where I want to share my knowledge about programming and personal stuffs with everybody. I hope you can finds beneficial something for yourself here, so if you have any questions, don't hesitate to comment in my blogs or reach out me on any of the social medium listed under website. See you all ! </h3>
+                <h3 className='py-2'>My name is Trường, a Frond End Developer and Designer. I has two years working at FPT Software Company and now I`&apos;`m working as a freelancer. I specialize in responsive websites and functional user interface. Besides developing websites, I love to enjoy photography and motorcycle adventures.</h3>
+                <h3 className='py-2'>This place is where I want to share my knowledge about programming and personal stuffs with everybody. I hope you can finds beneficial something for yourself here, so if you have any questions, don`&apos;`t hesitate to comment in my blogs or reach out me on any of the social medium listed under website. See you all ! </h3>
             </section>
             <Divider/>
             <section className="px-10">

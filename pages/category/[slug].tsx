@@ -1,19 +1,19 @@
 import React from 'react';
-import { GetServerSideProps, NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import { getPostsWithCategoryCondition } from 'services/posts';
-import { IPost } from 'interfaces/post.interface';
+import type { IPost } from 'interfaces/post.interface';
 import PostCard from '@components/post-card';
 import { Empty } from 'antd';
 
 type Props = {
-    postItems: IPost[]
+    readonly postItems: readonly IPost[]
 }
 
 const Category: NextPage<Props> = ({postItems}) => {
-    console.log(postItems);
+    // console.log(postItems);
     const renderPage = postItems.map((item) => {
         return (
-            <PostCard post={item} width="w-96">
+            <PostCard key={item.id} post={item} width="w-96">
 
             </PostCard>
         )
@@ -31,15 +31,17 @@ const Category: NextPage<Props> = ({postItems}) => {
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-     const slug = ctx.params?.slug;
+     const slug = ctx.params?.slug ?? "";
      let postItems;
-     if(slug && typeof(slug) === 'string'){
+     if(slug && typeof(slug) == 'string'){
           postItems = await  getPostsWithCategoryCondition(slug)// your fetch function here 
+     } else {
+        postItems = []
      }
-     console.log(postItems);
+    //  console.log(postItems);
     return {
         props: {
-            postItems: postItems || []
+            postItems: postItems ?? []
         }
     }
 }

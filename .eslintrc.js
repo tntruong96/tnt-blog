@@ -72,7 +72,7 @@ module.exports = {
     '@typescript-eslint/promise-function-async': 'error',
     'no-return-await': 'off',
     '@typescript-eslint/return-await': 'error',
-    '@typescript-eslint/strict-boolean-expressions': 'error',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
 
     // React
