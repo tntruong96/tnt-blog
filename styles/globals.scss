@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('antd/dist/antd.css');
+
+h1 {
+    @apply text-4xl;
+}
+
+
+h2 {
+    @apply text-3xl;
+}
+
+h3 {
+    @apply text-2xl;
+}
+
+h4 {
+    @apply text-lg
+}
+
+h5 {
+    @apply text-sm
+}
+
+h6 {
+    @apply text-xs
+}

@@ -1,0 +1,6 @@
+export { default as Layout} from './layout'
+export { default as PostWidget} from './post-widget'
+export { default as PostCategory } from './post-category'
+export { default as PostDeail } from './post-detail'
+export { default as FormComment } from './form-comment'
+export { default as BlockComment } from './block-comment'
