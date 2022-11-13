@@ -16,17 +16,19 @@ const PostDetail: React.FC<Props> = ({ postDetail }) => {
 
   return (
     <PostDetailContainer className="">
-      <div className="relative h-80 w-full">
+      <div className="relative w-full">
         <Image
           className="rounded-md"
-          objectFit="fill"
-          layout="fill"
+          width={700}
+          height={400}
+          objectFit="cover"
+          layout="responsive"
           src={postDetail.featuredImage.url}
-          alt=""
+          alt={postDetail.featuredImage.id}
         />
       </div>
       <div className="p-4 ">
-        <h1 className="text-3xl font-bold">{postDetail.title}</h1>
+        <h1 className="text-3xl font-bold text-center">{postDetail.title}</h1>
         <div className="mb-4 flex justify-center">
           <div className="flex items-center justify-center">
             <FcBusinessman />

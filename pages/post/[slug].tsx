@@ -10,25 +10,30 @@ import {
 } from "@components/index";
 import type { IPost } from "interfaces/post.interface";
 import Author from "@components/author";
+import SpinLoading from "@components/spin";
 type Props = {
   readonly postDetail: IPost;
 };
 
 const PostDetail: NextPage<Props> = ({ postDetail }) => {
   const [reload, setReload] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   return (
     <div className="md:grid md:grid-cols-3">
-      <div className="p-4 md:col-span-2">
+      {loading  ? <SpinLoading/> : null}
+      <div className="md:col-span-2">
         <PostDeail postDetail={postDetail} />
         {/* <Author author={postDetail.author} /> */}
         <FormComment
           reload={reload}
           setReload={setReload}
           slug={postDetail.slug}
+          setLoading ={setLoading}
         />
-        <BlockComment reload={reload} slug={postDetail.slug} />
+        <BlockComment setLoading={setLoading} reload={reload} slug={postDetail.slug} />
       </div>
-      <div className="md:col-span-1">
+      <div className="hidden md:block col-span-1">
         <PostWidget />
         <PostCategory />
       </div>

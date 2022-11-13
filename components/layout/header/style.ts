@@ -25,7 +25,6 @@ export const HeaderNav = styled.nav`
   grid-row: 1 / span 3; */
   justify-items: center;
   justify-content: center;
-
   & ol {
     display: flex;
     justify-content: center;
@@ -123,6 +122,7 @@ export const Aside = styled.aside`
   bottom: 0;
   right: 0;
   transition: 0.5s;
+  z-index: 1;
 
   nav {
     width: 100%;

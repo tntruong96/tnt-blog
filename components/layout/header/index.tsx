@@ -61,7 +61,7 @@ const Header = () => {
             className="cursor-pointer"
             objectFit="fill"
             src={logo}
-            alt=""
+            alt="Logo"
           />
         </div>
         <HeaderNav className="hidden sm:block">

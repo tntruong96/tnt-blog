@@ -12,8 +12,8 @@ type Props = {
 const Home: NextPage<Props> = ({posts}) => {
   const renderPosts = posts.map( (post: IPost, index:number) => (<PostCard key={index} post={post.node}></PostCard>))
   return (
-    <div className='block md:grid md:grid-cols-3'>
-      <div className='col-span-2 flex flex-col justify-center items-center'>
+    <div className='block md:grid md:grid-cols-3 grid-re'>
+      <div className='col-span-2 flex flex-col items-center'>
       {renderPosts}
       </div>
       <div className="col-span-1 ">

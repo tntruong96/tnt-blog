@@ -1,27 +1,31 @@
 
 import type { IComment } from 'interfaces/post.interface';
 import moment from 'moment';
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { getCommentProcess } from 'services/comments';
 import { CommentContainer, CommentItem } from './style';
 
 type Props = {
     readonly slug: string,
-    readonly reload: boolean
+    readonly reload: boolean,
+    readonly setLoading:  React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const BlockComment: React.FC<Props> = ({slug, reload}) => {
+const BlockComment: React.FC<Props> = ({slug, reload, setLoading}) => {
     const [comments, setComments] = useState<IComment[]>([]);
     const [countComment, setCountComment] = useState<number>(0);
+    const router = useRouter();
     useEffect(() => {
         getComment();
-    }, [reload])
+    }, [reload, router])
 
     const getComment = () => {
         getCommentProcess(slug).then(res => {
             if(res){
                 setComments(res)
                 setCountComment(res.length);
+                setLoading(false);
             }
         });
     }

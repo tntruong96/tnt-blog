@@ -7,7 +7,6 @@ import { FcCalendar, FcBusinessman } from "react-icons/fc";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 
-
 interface Props {
   readonly post: IPost;
   readonly width?: string;
@@ -17,19 +16,31 @@ const PostCard: React.FC<Props> = ({ post, width }) => {
   const router = useRouter();
 
   return (
-    <PostCardContainer  className={classNames("mx-4 my-5 rounded-md bg-gray-200 shadow-lg", width ?  width : 'w-3/4' )}>
-      <div className="relative h-80 w-full overflow-hidden">
+    <PostCardContainer
+      className={classNames(
+        "mx-8 my-5 rounded-md bg-gray-200 shadow-lg",
+        width ? width : "w-3/4 "
+      )}
+    >
+      <div className=" w-full overflow-hidden">
         <Image
+          height={400}
+          width={800}
+          layout="responsive"
+          objectFit="cover"
           className="rounded-md"
-          objectFit="fill"
-          layout="fill"
           src={post.featuredImage.url}
-          alt=""
+          alt={post.featuredImage.filename}
         />
       </div>
       <div className="p-5">
-        <p className="my-4 text-center text-xl font-extrabold cursor-pointer" onClick={async () => router.push(`/post/${post.slug}`)}>{post.title}</p>
-        <div className="flex justify-center mb-4">
+        <p
+          className="my-4 cursor-pointer text-center text-xl font-extrabold"
+          onClick={async () => router.push(`/post/${post.slug}`)}
+        >
+          {post.title}
+        </p>
+        <div className="mb-4 flex justify-center">
           <div className="flex items-center justify-center">
             <FcBusinessman />
             <p>{post.author.name}</p>
@@ -44,7 +55,10 @@ const PostCard: React.FC<Props> = ({ post, width }) => {
         </div>
         <p>{post.excerpt}</p>
         <div className="flex w-full justify-center">
-          <button className="mt-4 cursor-pointer rounded-md bg-white p-2 shadow-md" onClick={async () => router.push(`/post/${post.slug}`)}>
+          <button
+            className="mt-4 cursor-pointer rounded-md bg-white p-2 shadow-md"
+            onClick={async () => router.push(`/post/${post.slug}`)}
+          >
             Continue Reading
           </button>
         </div>

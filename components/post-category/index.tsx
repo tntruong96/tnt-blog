@@ -4,10 +4,12 @@ import type { ICategory } from "interfaces/category.interface";
 import { getCategories } from "services/categories";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { SkeletonComponent } from "@components/skeleton";
 
 
 const PostCategory: React.FC = () => {
   const [listCategories, setListCategories] = useState<ICategory[]>([]);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const routeFunction= () => {
@@ -22,13 +24,20 @@ const PostCategory: React.FC = () => {
   ));
 
   useEffect(() => {
-    getCategories().then((res) => setListCategories(res));
-  }, []);
+    setLoading(true);
+    getCategories().then((res) => {
+      setListCategories(res);
+      setLoading(false);
+    });
+  }, [router]);
 
   return (
     <PostCategoryContainer className="m-5 rounded-md bg-slate-200 p-5  md:w-2/3">
       <h2 className="text-center text-2xl font-semibold">Categories</h2>
-      <div className="flex flex-wrap justify place-content-center">{renderCategories}</div>
+      <div className="flex flex-wrap justify place-content-center">{
+          loading ?  <SkeletonComponent/> : renderCategories
+      
+      }</div>
     </PostCategoryContainer>
   );
 };
