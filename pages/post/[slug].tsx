@@ -9,8 +9,13 @@ import {
   BlockComment,
 } from "@components/index";
 import type { IPost } from "interfaces/post.interface";
-import Author from "@components/author";
-import SpinLoading from "@components/spin";
+// import Author from "@components/author";
+import dynamic from "next/dynamic";
+
+ const DynamicSpin = dynamic(async () => import("../../components/spin"));
+
+
+
 type Props = {
   readonly postDetail: IPost;
 };
@@ -21,7 +26,7 @@ const PostDetail: NextPage<Props> = ({ postDetail }) => {
 
   return (
     <div className="md:grid md:grid-cols-3">
-      {loading  ? <SpinLoading/> : null}
+      {loading  ? <DynamicSpin/> : null}
       <div className="md:col-span-2">
         <PostDeail postDetail={postDetail} />
         {/* <Author author={postDetail.author} /> */}

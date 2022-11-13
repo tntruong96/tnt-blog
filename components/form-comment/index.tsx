@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { publishComment, submitComment } from "services/comments";
 import type { FormData } from "services/comments";
 import { Form, FormContainer, FormField } from "./style";
-import { useSpin } from "utils/useSpin";
 
 type Props = {
   readonly slug: string;
@@ -27,9 +26,9 @@ const FormComment: React.FC<Props> = ({
 //   }, [reload]);
 
   const handleSubmit = async () => {
-    let email = emailEl.current?.value;
-    let name = nameEl.current?.value;
-    let comment = commentEl.current?.value;
+    const email = emailEl.current?.value;
+    const name = nameEl.current?.value;
+    const comment = commentEl.current?.value;
 
     const cleanFieldForm = () => {
       emailEl.current!.value = "";
